@@ -17,8 +17,9 @@ def incr_time (maze):
 	return maze
 
 
-maze = [[7,0], [13,0], [3,2], [5,2], [17,0], [19,7]]
-#maze = [[5,4],[2,1]]
+maze = [[7,0], [13,0], [3,2], [5,2], [17,0], [19,7]] # PART 1
+#maze = [[7,0], [13,0], [3,2], [5,2], [17,0], [19,7],[11,0]] # PART 2
+#maze = [[5,4],[2,1]] # Test
 done = get_done_state(maze)
 
 print "done state", done
