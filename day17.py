@@ -12,6 +12,7 @@ input = 'njfxhljp'
 #input = 'kglvqrro' # sample 2
 #input = 'ulqzkmiv' # sample 3
 opens = 'bcdef'
+input_len = len(input)
 
 
 def is_done(input):
@@ -57,12 +58,13 @@ print is_inbounds('DDDD') == False
 print is_inbounds('RRRR') == False
 
 tested = set()
+dones = set()
 while len(stack) > 0:
 	cur = stack.pop(0)
-	print cur
+
 	if is_done(cur):
-		print "Done: ", cur
-		break
+		dones.add(cur)
+		continue
 
 	tested.add(cur)
 
@@ -73,4 +75,5 @@ while len(stack) > 0:
 			stack.append(next)
 
 
-
+print "shortest path", min(dones, key=len) [input_len:]
+print "longest path", len(max(dones, key=len)) - input_len
