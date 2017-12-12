@@ -28,4 +28,25 @@ def distance_left(xy,goalxy):
     x2,y2 = goalxy
     return abs(x1-x2) + abs(y1-y2)
     
-print len(astar((1,1), (31,39), distance_left, possible_moves)) - 1
+# part1
+print "min moves to target: ", len(astar((1,1), (31,39), distance_left, possible_moves)) - 1
+
+# part2
+def possible_states(start, moves_func, max_moves):
+    q = [(0, start)] # (move_count, state)
+    states = {}
+    
+    while True:
+        move_count, state = q.pop(0)
+        if move_count == max_moves:
+            return states
+            
+        for new_state in possible_moves(state):
+            new_move_count = move_count+1
+            if new_state not in states or new_move_count < states[new_state]:
+                q.append((new_move_count, new_state ))
+                states[new_state] = new_move_count
+        
+    
+
+print "max states in 50 moves:", len(possible_states((1,1), possible_moves, 50))
